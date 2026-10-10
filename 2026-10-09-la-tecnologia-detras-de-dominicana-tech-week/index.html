@@ -146,13 +146,17 @@
   --line: 3px solid #1e1e1e;  /* the one 2px line, at 1280 */
 }
 
-/* Talk page: one card in the event's style, slides first, event details below. */
+/* Talk page: one card in the event's style, slides first, event details below.
+   Shape comes from optional --talk-* tokens in the brand; the fallbacks are the DevFest template's. */
 :root {
   --page-bg: var(--color-bg, #f0f0f0);
   --ink: var(--color-fg, #1e1e1e);
   --card: var(--color-surface, #ffffff);
-  --line: 2px solid var(--ink);
-  --radius: 28px;
+  --line: var(--talk-line, 2px solid var(--ink));
+  --radius: var(--talk-radius, 28px);
+  --label-font: var(--talk-label-family, var(--font-mono, ui-monospace, monospace));
+  --label-weight: var(--talk-label-weight, 300);
+  --label-transform: var(--talk-label-transform, lowercase);
   --sans: var(--font-body, system-ui, sans-serif);
   --display: var(--font-heading, var(--sans));
   --mono: var(--font-mono, ui-monospace, monospace);
@@ -166,24 +170,25 @@ body { margin: 0; background: var(--page-bg); color: var(--ink); font: 18px/1.5 
 .card > *, .event dd { min-width: 0; overflow-wrap: anywhere; }
 .badge { width: min(16rem, 60vw); height: auto; display: block; }
 .card { background: var(--card); border: var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 5vw, 3rem); display: grid; gap: 1.5rem; }
-.kicker { font: 300 .85rem/1.4 var(--mono); text-transform: lowercase; letter-spacing: .02em; margin: 0; }
-h1 { font: 700 clamp(2rem, 6vw, 3.4rem)/1.0 var(--display); margin: 0; text-wrap: balance; }
+.kicker, .video h2, .event h2, .event dt { font-family: var(--label-font); font-weight: var(--label-weight); text-transform: var(--label-transform); letter-spacing: .04em; }
+.kicker { font-size: .85rem; line-height: 1.4; margin: 0; }
+h1 { font: var(--talk-heading-weight, 700) clamp(2rem, 6vw, 3.4rem)/1.05 var(--display); text-transform: var(--talk-heading-transform, none); letter-spacing: var(--talk-heading-spacing, normal); margin: 0; text-wrap: balance; }
 .abstract { margin: 0; max-width: 40rem; font-size: 1.1rem; }
 .actions { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; }
-.button { display: inline-block; background: var(--soft); color: var(--ink); border: var(--line); border-radius: 999px; padding: .7rem 1.5rem; font-weight: 700; text-decoration: none; }
-.button:hover, .button:focus-visible { background: var(--soft-2); outline: none; }
+.button { display: inline-block; background: var(--talk-button-bg, var(--soft)); color: var(--talk-button-fg, var(--ink)); border: var(--talk-button-border, var(--line)); border-radius: 999px; padding: .7rem 1.5rem; font-weight: 700; text-decoration: none; }
+.button:hover, .button:focus-visible { background: var(--talk-button-hover, var(--soft-2)); outline: 2px solid var(--ink); outline-offset: 2px; }
 .link { color: var(--ink); font-weight: 500; }
 .speaker { display: flex; gap: 1rem; align-items: center; }
 .speaker img { width: 4.5rem; height: 4.5rem; object-fit: cover; border-radius: 50%; border: var(--line); }
 .speaker p { margin: 0; }
 .speaker .role { font: 300 .9rem/1.4 var(--mono); }
-.video h2, .event h2 { font: 300 .85rem/1.4 var(--mono); margin: 0 0 .75rem; text-transform: lowercase; }
+.video h2, .event h2 { font-size: .85rem; line-height: 1.4; margin: 0 0 .75rem; }
 .video .frame { position: relative; aspect-ratio: 16 / 9; border: var(--line); border-radius: 20px; overflow: hidden; background: var(--page-bg); }
 .video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .video .pending { display: grid; place-items: center; aspect-ratio: 16 / 9; max-height: 12rem; border: 2px dashed var(--ink); border-radius: 20px; font: 300 .95rem/1.4 var(--mono); padding: 1rem; text-align: center; }
 .video a.watch { display: inline-block; margin-top: .75rem; }
 .event dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.25rem; margin: 0; }
-.event dt { font: 300 .85rem/1.6 var(--mono); }
+.event dt { font-size: .8rem; line-height: 1.8; }
 .event dd { margin: 0; min-width: 0; }
 .foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding: 0 .5rem; font: 300 .8rem/1.4 var(--mono); }
 .foot img { height: 1.6rem; width: auto; }

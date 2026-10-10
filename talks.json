@@ -8,7 +8,8 @@
     "date": "2026-10-09",
     "event": "DevFest Santo Domingo 2026",
     "source": "talks/2026-10-gdg-techweek-tooling",
-    "commit": "69a091c",
+    "commit": "f64cb23",
+    "external": false,
     "decks": [
       {
         "name": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta",
