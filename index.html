@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Charlas · Venture.do</title>
+<style>
+  :root { --bg: #f6f5f2; --fg: #16181d; --muted: #5b606b; --line: #d9d6cf; --accent: #2b59c3; color-scheme: light; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #14161a; --fg: #ecebe7; --muted: #a3a7b0; --line: #2c3038; --accent: #8fb0ff; color-scheme: dark; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 44rem; margin: 0 auto; padding: 4rem 1.25rem; }
+  h1 { font-size: 2rem; margin: 0 0 .25rem; text-wrap: balance; }
+  p.lede { color: var(--muted); margin: 0 0 2.5rem; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; }
+  li { display: grid; gap: .2rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  a { color: var(--accent); }
+  a.talk { font-size: 1.2rem; font-weight: 600; text-decoration: none; color: var(--fg); }
+  a.talk:hover, a.talk:focus-visible { color: var(--accent); }
+  .meta, .more { color: var(--muted); font-size: .95rem; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Charlas</h1>
+  <p class="lede">Las presentaciones publicadas por el equipo de Venture.do, tal como se dieron en el escenario.</p>
+  <ul>
+      <li>
+        <a class="talk" href="2026-10-gdg-techweek-tooling/">La tecnología detrás de Dominicana Tech Week</a>
+        <span class="meta">Jorge Vargas · 2026-10-09</span>
+        <span class="more"><a href="2026-10-gdg-techweek-tooling/larga/">versión larga</a></span>
+      </li>
+  </ul>
+</main>
+</body>
+</html>
