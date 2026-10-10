@@ -1,0 +1,26 @@
+[
+  {
+    "name": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta",
+    "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta/",
+    "title": "La tecnología detrás de Dominicana Tech Week",
+    "variant": "corta",
+    "presented": true,
+    "speaker": "jorge",
+    "speakerName": "Jorge Vargas",
+    "date": "2026-10-09",
+    "source": "talks/2026-10-gdg-techweek-tooling",
+    "commit": "b05e5ac"
+  },
+  {
+    "name": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-larga",
+    "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-larga/",
+    "title": "La tecnología detrás de Dominicana Tech Week",
+    "variant": "larga",
+    "presented": false,
+    "speaker": "jorge",
+    "speakerName": "Jorge Vargas",
+    "date": "2026-10-09",
+    "source": "talks/2026-10-gdg-techweek-tooling",
+    "commit": "b05e5ac"
+  }
+]
