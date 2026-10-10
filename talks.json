@@ -1,26 +1,27 @@
 [
   {
-    "name": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta",
-    "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta/",
+    "page": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week",
+    "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week/",
     "title": "La tecnología detrás de Dominicana Tech Week",
-    "variant": "corta",
-    "presented": true,
     "speaker": "jorge",
     "speakerName": "Jorge Vargas",
     "date": "2026-10-09",
+    "event": "DevFest Santo Domingo 2026",
     "source": "talks/2026-10-gdg-techweek-tooling",
-    "commit": "b05e5ac"
-  },
-  {
-    "name": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-larga",
-    "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-larga/",
-    "title": "La tecnología detrás de Dominicana Tech Week",
-    "variant": "larga",
-    "presented": false,
-    "speaker": "jorge",
-    "speakerName": "Jorge Vargas",
-    "date": "2026-10-09",
-    "source": "talks/2026-10-gdg-techweek-tooling",
-    "commit": "b05e5ac"
+    "commit": "69a091c",
+    "decks": [
+      {
+        "name": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta",
+        "variant": "corta",
+        "presented": true,
+        "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta/"
+      },
+      {
+        "name": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-larga",
+        "variant": "larga",
+        "presented": false,
+        "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-larga/"
+      }
+    ]
   }
 ]

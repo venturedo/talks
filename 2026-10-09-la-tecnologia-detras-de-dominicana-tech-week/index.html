@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La tecnología detrás de Dominicana Tech Week · DevFest Santo Domingo 2026</title>
+<meta name="description" content="Cómo usamos IA para administrar el backoffice de una unconference distribuida de 70+ sesiones y 2,500+ asistentes en menos de 2 meses y que aprendimos para la siguiente edición.">
+<meta property="og:title" content="La tecnología detrás de Dominicana Tech Week">
+<meta property="og:description" content="Jorge Vargas · DevFest Santo Domingo 2026">
+<style>
+/* Event brand: fonts and colour tokens come from the talk's brief.md (the event's design system). */
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjwUvbQoi-Entw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvbQoi-E.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjwUvbQoi-Entw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(assets/fonts/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvbQoi-E.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjwUvbQoi-Entw.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(assets/fonts/4UasrENHsxJlGDuGo1OIlJfC6l_24rlCK1Yo_Iqcsih3SAyH6cAwhX9RPjIUvbQoi-E.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhFq3-cXbKDO1w.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/L0x5DF4xlVMF-BfR8bXMIjhLq3-cXbKD.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root {
+  /* Contract names (AGENTS.md) */
+  --color-bg: #f0f0f0;        /* Off White, the ground */
+  --color-fg: #1e1e1e;        /* Black 02: all text, every outline */
+  --color-accent: #4285f4;    /* Blue 500: accents only, never behind text */
+  --font-heading: "Google Sans", system-ui, sans-serif;
+  --font-body: "Google Sans", system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
+  /* Brand palette */
+  --color-surface: #ffffff;
+  --color-blue-500: #4285f4;
+  --color-green-500: #34a853;
+  --color-yellow-600: #f9ab00;
+  --color-red-500: #ea4335;
+  --color-pastel-blue: #c3ecf6;
+  --color-pastel-green: #ccf6c5;
+  --color-pastel-yellow: #ffe7a5;
+  --color-pastel-red: #f8d8d8;
+  --color-halftone-blue: #57caff;
+  --color-halftone-green: #5cdb6d;
+  --color-halftone-yellow: #ffd427;
+  --color-halftone-red: #ff7daf;
+  --line: 3px solid #1e1e1e;  /* the one 2px line, at 1280 */
+}
+
+/* Talk page: one card in the event's style, slides first, event details below. */
+:root {
+  --page-bg: var(--color-bg, #f0f0f0);
+  --ink: var(--color-fg, #1e1e1e);
+  --card: var(--color-surface, #ffffff);
+  --line: 2px solid var(--ink);
+  --radius: 28px;
+  --sans: var(--font-body, system-ui, sans-serif);
+  --display: var(--font-heading, var(--sans));
+  --mono: var(--font-mono, ui-monospace, monospace);
+  --soft: var(--color-pastel-yellow, #ffe7a5);
+  --soft-2: var(--color-pastel-blue, #c3ecf6);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page-bg); color: var(--ink); font: 18px/1.5 var(--sans); }
+.page { max-width: 54rem; margin: 0 auto; padding: 2rem 1rem 3rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.card > *, .event dd { min-width: 0; overflow-wrap: anywhere; }
+.badge { width: min(16rem, 60vw); height: auto; display: block; }
+.card { background: var(--card); border: var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 5vw, 3rem); display: grid; gap: 1.5rem; }
+.kicker { font: 300 .85rem/1.4 var(--mono); text-transform: lowercase; letter-spacing: .02em; margin: 0; }
+h1 { font: 700 clamp(2rem, 6vw, 3.4rem)/1.0 var(--display); margin: 0; text-wrap: balance; }
+.abstract { margin: 0; max-width: 40rem; font-size: 1.1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; }
+.button { display: inline-block; background: var(--soft); color: var(--ink); border: var(--line); border-radius: 999px; padding: .7rem 1.5rem; font-weight: 700; text-decoration: none; }
+.button:hover, .button:focus-visible { background: var(--soft-2); outline: none; }
+.link { color: var(--ink); font-weight: 500; }
+.speaker { display: flex; gap: 1rem; align-items: center; }
+.speaker img { width: 4.5rem; height: 4.5rem; object-fit: cover; border-radius: 50%; border: var(--line); }
+.speaker p { margin: 0; }
+.speaker .role { font: 300 .9rem/1.4 var(--mono); }
+.video h2, .event h2 { font: 300 .85rem/1.4 var(--mono); margin: 0 0 .75rem; text-transform: lowercase; }
+.video .frame { position: relative; aspect-ratio: 16 / 9; border: var(--line); border-radius: 20px; overflow: hidden; background: var(--page-bg); }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video .pending { display: grid; place-items: center; aspect-ratio: 16 / 9; max-height: 12rem; border: 2px dashed var(--ink); border-radius: 20px; font: 300 .95rem/1.4 var(--mono); padding: 1rem; text-align: center; }
+.video a.watch { display: inline-block; margin-top: .75rem; }
+.event dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.25rem; margin: 0; }
+.event dt { font: 300 .85rem/1.6 var(--mono); }
+.event dd { margin: 0; min-width: 0; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding: 0 .5rem; font: 300 .8rem/1.4 var(--mono); }
+.foot img { height: 1.6rem; width: auto; }
+@media (max-width: 480px) { .event dl { grid-template-columns: 1fr; } .event dt { margin-top: .5rem; } }
+</style>
+</head>
+<body>
+<main class="page">
+  <img class="badge" src="assets/ds/track-badge-track1.svg" alt="Track 1 @ DevFest Santo Domingo 2026">
+
+  <article class="card">
+    <p class="kicker">Charla · Intermedio · Español</p>
+    <h1>La tecnología detrás de Dominicana Tech Week</h1>
+    <p class="abstract">Cómo usamos IA para administrar el backoffice de una unconference distribuida de 70+ sesiones y 2,500+ asistentes en menos de 2 meses y que aprendimos para la siguiente edición.</p>
+    <div class="actions">
+      <a class="button" href="../2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-corta/">Ver la presentación</a>
+      <a class="link" href="../2026-10-09-la-tecnologia-detras-de-dominicana-tech-week-larga/">Versión larga →</a>
+    </div>
+    <div class="speaker">
+      <img src="assets/photos/00-jorge-headshot.jpg" alt="Jorge Vargas">
+      <div>
+        <p><strong>Jorge Vargas</strong></p>
+        <p class="role">Managing Partner, Venture.do</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="card video">
+    <h2>video de la charla</h2>
+    <div class="pending">Todavía no está disponible. Cuando la publiquen, aparece aquí.</div>
+  </section>
+
+  <section class="card event">
+    <h2>el evento</h2>
+    <dl>
+      <dt>evento</dt><dd>DevFest Santo Domingo 2026 · GDG Santo Domingo</dd>
+      <dt>fecha</dt><dd>Viernes, 9 de octubre de 2026 · 3:35–4:15 pm</dd>
+      <dt>lugar</dt><dd>Biblioteca Nacional Pedro Henríquez Ureña, Santo Domingo</dd>
+      <dt>sala</dt><dd>Track 1 · Salón Principal</dd>
+      <dt>temas</dt><dd>AI/ML, Comunidad</dd>
+      <dt>web</dt><dd><a class="link" href="https://devfest.gdgsantodomingo.org">devfest.gdgsantodomingo.org</a> · <a class="link" href="https://devfest.gdgsantodomingo.org/schedule">agenda</a></dd>
+    </dl>
+  </section>
+
+  <footer class="foot">
+    <span><a class="link" href="../">Todas las charlas</a></span>
+    <img src="assets/ds/logo-gdg-lockup.svg" alt="GDG Santo Domingo">
+  </footer>
+</main>
+</body>
+</html>
