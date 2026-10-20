@@ -1,5 +1,24 @@
 [
   {
+    "page": "2026-10-19-presentacion-de-venture-do-a-estudiantes-de-secundaria-en-evento-de-promipymes",
+    "url": "https://venturedo.github.io/talks/2026-10-19-presentacion-de-venture-do-a-estudiantes-de-secundaria-en-evento-de-promipymes/",
+    "title": "Presentación de Venture.do a estudiantes de secundaria en evento de Promipymes",
+    "speaker": "michael",
+    "speakerName": "Michael Jacobo",
+    "date": "2026-10-19",
+    "event": "Evento de Promipymes",
+    "source": "startups-estudiantes-deck",
+    "external": false,
+    "decks": [
+      {
+        "name": "2026-10-19-presentacion-de-venture-do-a-estudiantes-de-secundaria-en-evento-de-promipymes-larga",
+        "variant": "larga",
+        "presented": true,
+        "url": "https://venturedo.github.io/talks/2026-10-19-presentacion-de-venture-do-a-estudiantes-de-secundaria-en-evento-de-promipymes-larga/"
+      }
+    ]
+  },
+  {
     "page": "2026-10-09-la-tecnologia-detras-de-dominicana-tech-week",
     "url": "https://venturedo.github.io/talks/2026-10-09-la-tecnologia-detras-de-dominicana-tech-week/",
     "title": "La tecnología detrás de Dominicana Tech Week",
