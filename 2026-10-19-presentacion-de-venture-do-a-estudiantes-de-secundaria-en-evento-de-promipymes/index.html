@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Presentación de Venture.do a estudiantes de secundaria en evento de Promipymes · Evento de Promipymes</title>
+<meta name="description" content="Cómo funciona el mundo de las startups: qué son, ejemplos del mundo, de Latinoamérica y de República Dominicana, cómo se financian con venture capital y quién apoya a los emprendedores en el país.">
+<meta property="og:title" content="Presentación de Venture.do a estudiantes de secundaria en evento de Promipymes">
+<meta property="og:description" content="Michael Jacobo · Evento de Promipymes">
+<style>
+/* Event brand: fonts and colour tokens come from the talk's brief.md (the event's design system). */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(assets/fonts/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCvr73w5aXp-p7K4KLg.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(assets/fonts/nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5Hc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(assets/fonts/nwpStKy2OAdR1K-IwhWudF-R3w8aZejf5Hc.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root {
+  /* Contract names (AGENTS.md) */
+  --color-bg: #f5f5f5;
+  --color-fg: #011f41;
+  --color-accent: #ff4438;
+  --color-surface: #ffffff;
+  --font-heading: "Montserrat", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Talk page shape */
+  --talk-radius: 16px;
+  --talk-line: 1px solid #e0e6eb;
+  --talk-button-bg: #ff4438;
+  --talk-button-fg: #ffffff;
+  --talk-button-hover: #011f41;
+  --talk-heading-weight: 800;
+  --talk-heading-transform: uppercase;
+  --talk-heading-spacing: 0.025em;
+  --talk-label-family: "Montserrat", system-ui, sans-serif;
+  --talk-label-weight: 800;
+  --talk-label-transform: uppercase;
+  --talk-button-border: 0;
+}
+
+/* Talk page: one card in the event's style, slides first, event details below.
+   Shape comes from optional --talk-* tokens in the brand; the fallbacks are the DevFest template's. */
+:root {
+  --page-bg: var(--color-bg, #f0f0f0);
+  --ink: var(--color-fg, #1e1e1e);
+  --card: var(--color-surface, #ffffff);
+  --line: var(--talk-line, 2px solid var(--ink));
+  --radius: var(--talk-radius, 28px);
+  --label-font: var(--talk-label-family, var(--font-mono, ui-monospace, monospace));
+  --label-weight: var(--talk-label-weight, 300);
+  --label-transform: var(--talk-label-transform, lowercase);
+  --sans: var(--font-body, system-ui, sans-serif);
+  --display: var(--font-heading, var(--sans));
+  --mono: var(--font-mono, ui-monospace, monospace);
+  --soft: var(--color-pastel-yellow, #ffe7a5);
+  --soft-2: var(--color-pastel-blue, #c3ecf6);
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page-bg); color: var(--ink); font: 18px/1.5 var(--sans); }
+.page { max-width: 54rem; margin: 0 auto; padding: 2rem 1rem 3rem; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.card > *, .event dd { min-width: 0; overflow-wrap: anywhere; }
+.badge { width: min(16rem, 60vw); height: auto; display: block; }
+.card { background: var(--card); border: var(--line); border-radius: var(--radius); padding: clamp(1.5rem, 5vw, 3rem); display: grid; gap: 1.5rem; }
+.kicker, .video h2, .event h2, .event dt { font-family: var(--label-font); font-weight: var(--label-weight); text-transform: var(--label-transform); letter-spacing: .04em; }
+.kicker { font-size: .85rem; line-height: 1.4; margin: 0; }
+h1 { font: var(--talk-heading-weight, 700) clamp(2rem, 6vw, 3.4rem)/1.05 var(--display); text-transform: var(--talk-heading-transform, none); letter-spacing: var(--talk-heading-spacing, normal); margin: 0; text-wrap: balance; }
+.abstract { margin: 0; max-width: 40rem; font-size: 1.1rem; }
+.actions { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; }
+.button { display: inline-block; background: var(--talk-button-bg, var(--soft)); color: var(--talk-button-fg, var(--ink)); border: var(--talk-button-border, var(--line)); border-radius: 999px; padding: .7rem 1.5rem; font-weight: 700; text-decoration: none; }
+.button:hover, .button:focus-visible { background: var(--talk-button-hover, var(--soft-2)); outline: 2px solid var(--ink); outline-offset: 2px; }
+.link { color: var(--ink); font-weight: 500; }
+.speaker { display: flex; gap: 1rem; align-items: center; }
+.speaker img { width: 4.5rem; height: 4.5rem; object-fit: cover; border-radius: 50%; border: var(--line); }
+.speaker p { margin: 0; }
+.speaker .role { font: 300 .9rem/1.4 var(--mono); }
+.video h2, .event h2 { font-size: .85rem; line-height: 1.4; margin: 0 0 .75rem; }
+.video .frame { position: relative; aspect-ratio: 16 / 9; border: var(--line); border-radius: 20px; overflow: hidden; background: var(--page-bg); }
+.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video .pending { display: grid; place-items: center; aspect-ratio: 16 / 9; max-height: 12rem; border: 2px dashed var(--ink); border-radius: 20px; font: 300 .95rem/1.4 var(--mono); padding: 1rem; text-align: center; }
+.video a.watch { display: inline-block; margin-top: .75rem; }
+.event dl { display: grid; grid-template-columns: max-content 1fr; gap: .4rem 1.25rem; margin: 0; }
+.event dt { font-size: .8rem; line-height: 1.8; }
+.event dd { margin: 0; min-width: 0; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; padding: 0 .5rem; font: 300 .8rem/1.4 var(--mono); }
+.foot img { height: 1.6rem; width: auto; }
+@media (max-width: 480px) { .event dl { grid-template-columns: 1fr; } .event dt { margin-top: .5rem; } }
+</style>
+</head>
+<body>
+<main class="page">
+  
+
+  <article class="card">
+    <p class="kicker">Charla · Estudiantes de secundaria · Español</p>
+    <h1>Presentación de Venture.do a estudiantes de secundaria en evento de Promipymes</h1>
+    <p class="abstract">Cómo funciona el mundo de las startups: qué son, ejemplos del mundo, de Latinoamérica y de República Dominicana, cómo se financian con venture capital y quién apoya a los emprendedores en el país.</p>
+    <div class="actions">
+      <a class="button" href="../2026-10-19-presentacion-de-venture-do-a-estudiantes-de-secundaria-en-evento-de-promipymes-larga/">Ver la presentación</a>
+      
+    </div>
+    <div class="speaker">
+      <img src="assets/photos/michael-headshot.jpg" alt="Michael Jacobo">
+      <div>
+        <p><strong>Michael Jacobo</strong></p>
+        <p class="role">Managing Partner, Venture.do</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="card video">
+    <h2>video de la charla</h2>
+    <div class="pending">Todavía no está disponible. Cuando la publiquen, aparece aquí.</div>
+  </section>
+
+  <section class="card event">
+    <h2>el evento</h2>
+    <dl>
+      <dt>evento</dt><dd>Evento de Promipymes</dd>
+      <dt>fecha</dt><dd>Lunes, 19 de octubre de 2026</dd>
+      <dt>temas</dt><dd>Startups, Venture capital, Emprendimiento</dd>
+    </dl>
+  </section>
+
+  <footer class="foot">
+    <span><a class="link" href="../">Todas las charlas</a></span>
+    <img src="assets/logos/venture-do.svg" alt="">
+  </footer>
+</main>
+</body>
+</html>
